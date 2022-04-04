@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // Delete Sign Up user
-  deleteSubscriber(row: any) {
+  deleteUser(row: any) {
     this.signUpService.deleteSignUp(row.id).subscribe({
       next: () => { this.getUser() },
       error: () => { this.toastr.warning("Failed to Delete"); },
