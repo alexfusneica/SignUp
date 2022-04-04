@@ -22,20 +22,20 @@
       <td data-label="Email address" class="col-5">{{ user.email }}</td>
       <td data-label="User gender" class="col-1">{{ user.gender }}</td>
       <td data-label="User status" class="col-1">{{ user.status }}</td>
-      <td>
+      <td class="col">
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-primary btn-edit"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
           (click)="onEdit(user)"
         >
-          Edit
+          Modify
         </button>
       </td>
-      <td class="col-1">
+      <td class="col">
         <button
-          class="active btn btn-danger delete-btn"
+          class="btn btn-danger delete-btn"
           (click)="deleteSubscriber(user)"
         >
           Delete

@@ -1,9 +1,12 @@
+.btn-edit{
+  margin-left: 1rem;
+}
 .go-back {
   margin: 20px 0 20px 40px;
 }
 
 .delete-btn {
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
 @media (max-width: 600px) {
   .go-back {
