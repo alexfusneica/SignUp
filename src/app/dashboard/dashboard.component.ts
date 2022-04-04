@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserModel } from '../shared/models/user.model';
 import { SignUpService } from '../signup.service';
 
@@ -11,7 +13,7 @@ export class DashboardComponent implements OnInit {
 
   users: UserModel[];
 
-  constructor(private signUpService: SignUpService) {
+  constructor(private router: Router, private signUpService: SignUpService, private toastr: ToastrService) {
     this.users = new Array<UserModel>();
   }
 
@@ -28,8 +30,18 @@ export class DashboardComponent implements OnInit {
 
   // Delete Sign Up user
   deleteSubscriber(row: any) {
-    this.signUpService.deleteSignUp(row.id).subscribe(res => {
-      this.getSubscrber()
-    })
+    this.signUpService.deleteSignUp(row.id).subscribe(
+      (response) => {
+        this.getSubscrber();
+        this.toastr.success("User Deleted Successfully");
+      }, (error) => {
+        this.toastr.warning("Failed to Delete");
+        throw error;
+      })
+  }
+
+  // Navigate to Sign Up
+  backToSignUp() {
+    this.router.navigate(['signup'])
   }
 }

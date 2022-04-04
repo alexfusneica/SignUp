@@ -1,3 +1,6 @@
+.go-back {
+  margin: 20px 0 20px 40px;
+}
 .table {
   margin: 2rem !important;
 }
@@ -5,9 +8,12 @@
   margin-left: 2rem;
 }
 @media (max-width: 600px) {
+  .go-back {
+    margin: auto;
+  }
   .delete-btn {
-    margin-top: 2rem !important;
     margin-left: 0 !important;
+    margin-bottom: 2rem !important;
   }
   .table-body {
     padding-right: 10px;
