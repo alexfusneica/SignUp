@@ -66,25 +66,45 @@
       <div class="modal-body">
         <form [formGroup]="formValue">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Full Name</label>
+            <label for="exampleInputName" class="form-label">Full Name</label>
             <input
               type="text"
               formControlName="name"
               class="form-control"
-              id="exampleInputEmail1"
+              id="exampleInputName"
               aria-describedby="emailHelp"
             />
+            <span
+              class="text-danger"
+              *ngIf="
+                formValue.controls['name'].dirty &&
+                formValue.hasError('required', 'name')
+              "
+              >*Full name is required</span
+            >
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label"
+            <label for="exampleInputEmail" class="form-label"
               >Email address</label
             >
             <input
               type="text"
               formControlName="email"
               class="form-control"
-              id="exampleInputPassword1"
+              id="exampleInputEmail"
             />
+            <span
+              class="text-danger"
+              *ngIf="
+                formValue.controls['email'].dirty &&
+                formValue.hasError('required', 'email')
+              "
+              >*Email address is required</span
+            ><span
+              class="text-danger"
+              *ngIf="formValue.hasError('email', 'email')"
+              >*Email is Invalid</span
+            >
           </div>
           <div class="mb-3">
             <label>User gender</label>
@@ -93,6 +113,14 @@
               <option value="female">Female</option>
               <option value="male">Male</option>
             </select>
+            <span
+              class="text-danger"
+              *ngIf="
+                formValue.controls['gender'].dirty &&
+                formValue.hasError('required', 'gender')
+              "
+              >*User type is required</span
+            >
           </div>
           <div class="mb-3">
             <label>User Status</label>
@@ -101,6 +129,14 @@
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
             </select>
+            <span
+              class="text-danger"
+              *ngIf="
+                formValue.controls['status'].dirty &&
+                formValue.hasError('required', 'status')
+              "
+              >*User status is required</span
+            >
           </div>
         </form>
       </div>

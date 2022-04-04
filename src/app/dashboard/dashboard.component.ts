@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserModel } from '../shared/models/user.model';
 import { SignUpService } from '../services/signup.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,10 +24,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.formValue = this.fb.group({
-      name: [''],
-      email: [''],
-      gender: [''],
-      status: ['']
+      name: ["", Validators.required],
+      email: ["", Validators.compose([Validators.required, Validators.email])],
+      gender: ["", Validators.required],
+      status: ["", Validators.required]
     })
     this.getUser();
   }
@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit {
     this.signUpObj.status = this.formValue.value.status;
     this.signUpService.updateSignUp(this.signUpObj, row.id).subscribe({
 
-      next: () => { this.signUpObj; this.toastr.success("User was edited") },
+      next: () => { console.log(this.signUpObj), this.toastr.success("User was edited") },
       error: () => { this.toastr.warning("Failed to Edit") },
       complete: () => {
         let ref = document.getElementById('close');
