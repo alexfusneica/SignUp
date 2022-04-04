@@ -31,8 +31,8 @@ export class SignUpService {
   }
 
   // Update User
-  updateSignUp(data: any) {
-    return this.http.put<UserModel[]>(this.url, data)
+  updateSignUp(data: any,id:number) {
+    return this.http.put<UserModel[]>(this.url +id, data)
       .pipe(map((res: any) => {
         return res
       }))
