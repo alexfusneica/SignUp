@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserModel } from '../shared/models/user.model';
@@ -17,7 +17,6 @@ export class DashboardComponent implements OnInit {
   formValue !: FormGroup;
   showAdd !: boolean;
   showUpdate !: boolean;
-  @Input() receive !: string;
 
   constructor(private router: Router, private signUpService: SignUpService, private toastr: ToastrService, private fb: FormBuilder) {
     this.users = new Array<UserModel>();
