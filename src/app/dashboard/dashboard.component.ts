@@ -10,28 +10,25 @@ import { SignUpService } from '../signup.service';
 export class DashboardComponent implements OnInit {
 
   users: UserModel[];
- 
 
-  constructor( private signUpService: SignUpService) {
+  constructor(private signUpService: SignUpService) {
     this.users = new Array<UserModel>();
-   }
+  }
 
   ngOnInit(): void {
     this.getSubscrber();
   }
 
   // Get Sign Up users
-  getSubscrber(){
+  getSubscrber() {
     this.signUpService.getSignUpData().subscribe((res: UserModel[]) => {
-      console.log(res)
       this.users = res;
-      
     })
   }
 
   // Delete Sign Up user
-  deleteSubscriber(row:any){
-    this.signUpService.deleteSignUp(row.id).subscribe(res =>{
+  deleteSubscriber(row: any) {
+    this.signUpService.deleteSignUp(row.id).subscribe(res => {
       this.getSubscrber()
     })
   }
