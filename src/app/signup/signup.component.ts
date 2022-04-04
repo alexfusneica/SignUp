@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, Observable, throwError } from 'rxjs';
 import { UserModel } from '../shared/models/user.model';
-import { SignUpService } from '../signup.service';
+import { SignUpService } from '../services/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +12,7 @@ import { SignUpService } from '../signup.service';
 })
 export class SignupComponent implements OnInit {
 
-  
+
   users: UserModel[];
 
   public signUpForm !: FormGroup;
@@ -32,30 +31,20 @@ export class SignupComponent implements OnInit {
       gender: ["", Validators.required],
       status: ["", Validators.required]
     })
-
-    // Get Sign Up users
-    this.signUpService.getSignUpData().subscribe((data: UserModel[]) => {
-      this.users = data
-    })
   }
 
   // Sign Up submit function to save user data from form
   signUp() {
-    
+
     this.signUpObj.name = this.signUpForm.value.name;
     this.signUpObj.email = this.signUpForm.value.email;
     this.signUpObj.gender = this.signUpForm.value.gender;
     this.signUpObj.status = this.signUpForm.value.status;
 
-    this.signUpService.signUp(this.signUpObj).subscribe(
-      (response) => {                
-        this.toastr.success("Subscribe aproved");           
-        this.router.navigate(['success'])
-      },(error) => {                              
-        this.toastr.warning("Failed to Subscribe");
-      throw error;
+    this.signUpService.signUp(this.signUpObj).subscribe({
+      next: () => { this.router.navigate(['success']) },
+      error: () => { this.toastr.warning("Failed to Subscribe"); },
+      complete: () => { this.toastr.success("Subscribe aproved"); },
     });
-
-    
   }
 }

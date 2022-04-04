@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserModel } from '../shared/models/user.model';
-import { SignUpService } from '../signup.service';
+import { SignUpService } from '../services/signup.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,14 +30,11 @@ export class DashboardComponent implements OnInit {
 
   // Delete Sign Up user
   deleteSubscriber(row: any) {
-    this.signUpService.deleteSignUp(row.id).subscribe(
-      (response) => {
-        this.getSubscrber();
-        this.toastr.success("User Deleted Successfully");
-      }, (error) => {
-        this.toastr.warning("Failed to Delete");
-        throw error;
-      })
+    this.signUpService.deleteSignUp(row.id).subscribe({
+      next: () => { this.getSubscrber() },
+      error: () => { this.toastr.warning("Failed to Delete"); },
+      complete: () => { this.toastr.success("User was deleted") },
+    })
   }
 
   // Navigate to Sign Up

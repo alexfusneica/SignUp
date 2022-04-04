@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { catchError, map, throwError } from 'rxjs';
-import { UserModel } from './shared/models/user.model';
+import { map } from 'rxjs';
+import { UserModel } from '../shared/models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +9,7 @@ import { UserModel } from './shared/models/user.model';
 export class SignUpService {
   url = "https://gorest.co.in/public/v2/users/";
 
-  constructor(private http: HttpClient, private toastr: ToastrService) { }
+  constructor(private http: HttpClient) { }
 
   // Get all users
   getSignUpData() {
