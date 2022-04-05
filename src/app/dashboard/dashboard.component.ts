@@ -69,7 +69,6 @@ export class DashboardComponent implements OnInit {
   // Get data into modal
   onEdit(user: any) {
     this.signUpObj.id = user.id;
-    this.formValue.controls["id"].setValue(user.id);
     this.formValue.controls["name"].setValue(user.name);
     this.formValue.controls["email"].setValue(user.email);
     this.formValue.controls["gender"].setValue(user.gender);
