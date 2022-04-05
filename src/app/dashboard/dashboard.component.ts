@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // Delete Sign Up user
-  deleteUser(user: any) {
+  deleteUser(user: UserModel) {
     this.signUpService.deleteSignUp(user.id).subscribe({
       next: () => { this.getUser() },
       error: () => { this.toastr.warning("Failed to Delete"); },
@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // Edit user
-  editUserDetail(user: any) {
+  editUserDetail(user: UserModel) {
     this.signUpObj.id = user.id;
     this.signUpObj.name = this.formValue.value.name;
     this.signUpObj.email = this.formValue.value.email;
@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // Get data into modal
-  onEdit(user: any) {
+  onEdit(user: UserModel) {
     this.signUpObj.id = user.id;
     this.formValue.controls["name"].setValue(user.name);
     this.formValue.controls["email"].setValue(user.email);

@@ -17,7 +17,7 @@ export class SignUpService {
   }
 
   // Submission of new users 
-  signUp(data: any) {
+  signUp(data: UserModel) {
     return this.http.post<UserModel[]>(this.url, data)
 
   }
@@ -25,15 +25,15 @@ export class SignUpService {
   // Delete user
   deleteSignUp(id: number) {
     return this.http.delete<UserModel[]>(this.url + id)
-      .pipe(map((res: any) => {
+      .pipe(map((res: UserModel[]) => {
         return res;
       }))
   }
 
   // Update User
-  updateSignUp(data: any, id: number) {
+  updateSignUp(data: UserModel, id: number) {
     return this.http.put<UserModel[]>(this.url + id, data)
-      .pipe(map((res: any) => {
+      .pipe(map((res: UserModel[]) => {
         return res
       }))
   }

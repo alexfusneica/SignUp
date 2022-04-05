@@ -8,11 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TokenInterceportService } from './authenticator-interceport';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 import { SuccessComponent } from './success/success.component';
 import { ToastrModule } from 'ngx-toastr';
+import { TokenInterceportService } from './interceptors/authenticator-interceport';
 
 @NgModule({
   declarations: [
