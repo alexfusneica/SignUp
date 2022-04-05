@@ -15,7 +15,7 @@ export class SignUpService {
   getSignUpData() {
     return this.http.get<UserModel[]>(this.url)
   }
-  
+
   // Submission of new users 
   signUp(data: any) {
     return this.http.post<UserModel[]>(this.url, data)
@@ -23,7 +23,7 @@ export class SignUpService {
   }
 
   // Delete user
-  deleteSignUp(id: string) {
+  deleteSignUp(id: number) {
     return this.http.delete<UserModel[]>(this.url + id)
       .pipe(map((res: any) => {
         return res;
@@ -31,8 +31,8 @@ export class SignUpService {
   }
 
   // Update User
-  updateSignUp(data: any,id:number) {
-    return this.http.put<UserModel[]>(this.url +id, data)
+  updateSignUp(data: any, id: number) {
+    return this.http.put<UserModel[]>(this.url + id, data)
       .pipe(map((res: any) => {
         return res
       }))

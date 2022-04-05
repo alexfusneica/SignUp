@@ -50,7 +50,6 @@
   role="dialog"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
-  *ngFor="let user of users"
 >
   <div class="modal-dialog">
     <div class="modal-content">
@@ -151,8 +150,7 @@
         </button>
         <button
           type="button"
-          *ngIf="showUpdate"
-          (click)="editUserDetail(user)"
+          (click)="editUserDetail(this.signUpObj)"
           class="btn btn-primary"
         >
           Update

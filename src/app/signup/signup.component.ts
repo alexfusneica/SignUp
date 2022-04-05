@@ -12,7 +12,6 @@ import { SignUpService } from '../services/signup.service';
 })
 export class SignupComponent implements OnInit {
 
-
   users: UserModel[];
 
   public signUpForm !: FormGroup;
@@ -35,7 +34,6 @@ export class SignupComponent implements OnInit {
 
   // Sign Up submit function to save user data from form
   signUp() {
-
     this.signUpObj.name = this.signUpForm.value.name;
     this.signUpObj.email = this.signUpForm.value.email;
     this.signUpObj.gender = this.signUpForm.value.gender;
